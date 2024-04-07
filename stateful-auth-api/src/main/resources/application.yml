@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: stateful-auth-api
+server:
+  port: ${PORT:8082}
