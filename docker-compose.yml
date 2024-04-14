@@ -43,6 +43,8 @@ services:
       context: "./stateful-any-api"
       dockerfile: Dockerfile
     image: stateful-any
+    environment:
+      STATEFUL_AUTH_BASE_URL: "http://stateful-auth-api:8082"
     networks:
       - stateful-auth
     ports:
