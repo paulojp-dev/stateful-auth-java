@@ -1,10 +1,10 @@
 version: '3'
 
 services:
-  stateful-auth:
+  stateful-auth-api:
     container_name: stateful-auth-api
     build:
-      context: .
+      context: "./stateful-auth-api"
       dockerfile: Dockerfile
     image: stateful-auth
     environment:
@@ -33,6 +33,19 @@ services:
       - stateful-auth
     ports:
       - "5433:5432"
+
+  stateful-any-api:
+    container_name: stateful-any-api
+    build:
+      context: "./stateful-any-api"
+      dockerfile: Dockerfile
+    image: stateful-any
+    networks:
+      - stateful-auth
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./:/app
 
 networks:
   stateful-auth:
